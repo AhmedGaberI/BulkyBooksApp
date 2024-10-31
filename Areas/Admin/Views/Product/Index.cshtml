@@ -1,7 +1,8 @@
 ﻿@model List<Product>
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient m-lg-0 py-0">
         <div class="row">
@@ -21,8 +22,8 @@
                 </a>
             </div>
         </div>
-
-        <table class="table table-bordered table-striped">
+ 
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>
@@ -37,37 +38,11 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var product in Model)
-                {
-                    <tr>
-                        <td>
-                            @product.Title
-                        </td>
-                        <td>
-                            @product.ISBN
-                        </td>
-                        <td>@product.ListPrice</td>
-                        <td>@product.Author</td>
-                        <td>
-
-                        </td>
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Product" asp-action="Upsert" asp-route-id="@product.Id" class="btn btn-primary mx-2">
-                                    <i class="bi bi-pencil-square"></i>Edit
-                                </a>
-                                <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger mx-2">
-                                    <i class="bi bi-trash-fill"></i>Delete
-
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+           
+        </table> 
     </div>
 </div>
 
-
+ @section Scripts {
+    <script src="~/js/product.js"></script>
+} 
